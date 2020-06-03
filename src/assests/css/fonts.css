@@ -1,0 +1,105 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital@1&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap");
+@import url( "https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,700;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@1,600&display=swap");
+.font-plex
+{
+    font-family: 'IBM Plex Serif', serif;
+}
+
+.font-libre
+{
+    font-family: 'Libre Baskerville', serif;
+}
+.font-mont {
+    font-size: 1.2em;
+    line-height: 3rem;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+}
+.font-cinzel
+{
+    font-family: 'Cinzel', serif;
+}
+.font-roboto
+{
+    font-family: 'Roboto Mono', monospace;
+}
+.font-merri
+{
+    font-family: 'Merriweather', serif;
+}
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: none;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #b993d6, #8ca6db);
+    border: 1px solid #333;
+    box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.4);
+}
+.vertical-line
+{
+    border-right: 2px solid #b993d6;
+    padding-right: 2px;
+}
+.border-all
+{
+
+    border: 3px solid #b993d6;
+    padding: 3px;
+    border-radius: 15px;
+}
+.border-no
+{
+
+    border: 2px solid;
+    padding: 3px;
+    border-radius: 10px;
+}
+.hr-line
+{
+    border-top: 2px solid #b993d6;
+}
+.top-gap
+{
+    padding-top: 70px;
+}
+.font-crimson
+{
+    font-family: 'Crimson Text', serif;
+}
+.text-size
+{
+    font-size: 1.2em;
+}
+.main-back
+{padding-top: 20px;
+    background-image: linear-gradient(to bottom,#654a86,#534292);
+    background-color: #534292;
+}
+.main-button
+{
+    padding: 6px;
+    background: linear-gradient(to bottom,#654a86,#534292);
+    border:white 2px solid;
+    box-shadow: 3px 3px 0 rgba(255, 255, 255, 0.4);
+
+}
+.main-button:hover
+{
+    padding: 5px;
+    border-width: 3px;
+    background: #654a86;
+    border-radius: 20px;
+    border-style: solid;
+    border-color: white;
+
+}
