@@ -1,11 +1,13 @@
 .App {
   text-align: center;
-  background-image: linear-gradient(to bottom,#654a86,#534292);min-height: 100vh;
+
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   flex-direction: column;
   font-size: calc(10px + 2vmin);
   color:  #F8F6F6;
+  background-color: #1e1e30;
 }
 
 .App-logo {

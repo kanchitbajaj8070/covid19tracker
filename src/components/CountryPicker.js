@@ -39,15 +39,17 @@ class CountryPicker extends Component {
         const options =this.state.countryToCodes.map((obj,i)=><option className="text-light bg-dark"
                                                                  value={obj.country} name={obj.code} key={i} >{obj.country} </option>);
         return (
-            <div className="col-sm-12">
+            <div className="container-fluid">
+            <div className="col-sm-12 mt-4  ">
                 <Typography variant={"h5"}> Pick A Country</Typography>
-                <FormControl variant="outlined"  >
-                    <NativeSelect onChange={this.onChangeValue.bind(this)} className="col-sm-12 bg-transparent text-light" >
+                <FormControl variant="filled"  classname={"pt-2"}>
+                    <NativeSelect onChange={this.onChangeValue.bind(this)} className="col-sm-12 bg-dark  text-light" >
                         <option value="global" className={"text-primary bg-dark"}  name="global">
                             Global</option>
                         {options}
                     </NativeSelect>
                 </FormControl>
+            </div>
             </div>
         );
     }

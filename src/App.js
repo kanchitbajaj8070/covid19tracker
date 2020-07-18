@@ -10,9 +10,7 @@ function App() {
   return (
       <div className="App justify-content-center align-items-center align-content-center text-center">
       <Provider store={store}>
-
       <Home/>
-
       </Provider>
       </div>
   );

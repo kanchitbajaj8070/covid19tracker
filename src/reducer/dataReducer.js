@@ -35,8 +35,6 @@ export default function(state=intialState,action)
             return{
                 ...state,country: action.country,totalData: action.payload
             };
-        default :
-            return state;
-
+        default :return state;
     }
 }

@@ -1,0 +1,38 @@
+.main-table
+{
+    background: #261620;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    border-radius: 50%;
+    border: 3px solid #F8F6F6;
+
+}
+.main-table-row
+{
+    background: #1e1e36 !important;
+    max-width: 100px;
+    text-align: left;
+    border-top: 0px;
+    border-left:0;
+    border-right:0px;
+    border-bottom:#534299;
+    border-width: 2px;
+
+}
+.main-container
+{
+    overflow-x: scroll;
+    overflow-y: scroll;
+    width: 90%;
+}
+.main-header
+{
+    width: 30px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.custom-class
+{
+    background-color: red;
+}

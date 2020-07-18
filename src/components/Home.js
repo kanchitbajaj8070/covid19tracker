@@ -9,7 +9,9 @@ import Charts from "./Charts";
 import CountryPicker from "./CountryPicker";
 import {connect} from "react-redux"
 import PropTypes from "prop-types"
-;
+import DatePicker from "./DatePicker";
+import {getCountryTableData} from "../actions/dataActions";
+import Tables from "./Tables";
 
 class Home extends Component {
     constructor(props) {
@@ -29,9 +31,8 @@ class Home extends Component {
     render() {
 
         return (
-            <div className="container">
-
-         <div className="display-4 font-plex text-light"> COVID-19 Tracker </div>
+            <div className="container-fluid justify-content-center">
+         <div className="display-4 font-plex text-light p-3 mb-3 "> COVID-19 Tracker </div>
                 {this.state.isloading?(
                     <div>
                 <CircularProgress color={"primary"}/>
@@ -39,9 +40,20 @@ class Home extends Component {
                         <div>
                         <Cards />
                         <CountryPicker countryToCodes={this.state.countriesToCodesMapping}/>
-                            <div className="bg-light col-sm-12  shadow-lg container border-all">
+                            <div className="row justify-content-center p-5 ">
+                                <DatePicker countriesToCode={this.state.countriesToCodesMapping}/>
+                            </div>
+
+                            <div className="bg-transparent  col-sm-12 ">
                                 <Charts/>
                             </div>
+                            <hr className="bg-light"/>
+                            <div className="font-plex mt-4 h5">
+                                Country wise total Data
+                            </div>
+
+                            <Tables/>
+<hr className="bg-light"/>
                     </div>
 
                     )}
@@ -51,4 +63,8 @@ class Home extends Component {
     }
 }
 
-export default Home;
+Home.propTypes={
+    getCountryTableData:PropTypes.func.isRequired
+
+}
+export default connect(null,{getCountryTableData})(Home);

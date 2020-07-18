@@ -1,6 +1,6 @@
 .charts-main
 {
     padding: 2px;
-    color:  #F8F6F6;
-    min-height: 80vh;
+background-color: rgba(0,123,255,.066667) !important;
+    color :#007bff !important;
 }

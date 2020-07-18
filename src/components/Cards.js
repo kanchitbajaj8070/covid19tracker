@@ -18,13 +18,12 @@ class Cards extends Component {
         }
     }
     componentWillReceiveProps(nextProps, nextContext) {
-        console.log(nextProps.data)
+
         if( nextProps.data) {
-         console.log("inside if")
             this.setState({confirmed: nextProps.data.confirmed,
             recovered:nextProps.data.recovered,deaths:nextProps.data.deaths,
             lastUpdate:nextProps.data.lastUpdate,country:nextProps.country});
-        }console.log(this.state)
+        }
     }
 
     componentDidMount() {
@@ -38,12 +37,11 @@ class Cards extends Component {
     }
 
     render() {
-        console.log(this.state)
-        const {confirmed,recovered,deaths,lastUpdate}=this.state
+             const {confirmed,recovered,deaths,lastUpdate}=this.state
         return (
-            <div className="container">
-                <Grid container spacing={3} justify="center">
-                    <Grid item component={Card} xs={12} md={3} className="p-2 m-2 infected ">
+            <div className="container-fluid justify-content-center">
+                <Grid container spacing={3} justify="center" >
+                    <Grid item component={Card} xs={12} md={3} className="p-2 m-2 mt-4 infected ">
                         <CardContent>
                             <Typography colors="textSecondary" gutterBottom >Infected</Typography>
                             <Typography variant="h5">
@@ -54,7 +52,7 @@ class Cards extends Component {
                             <Typography variant="body2">Confirmed Cases of covid-19</Typography>
                         </CardContent>
                     </Grid>
-                    <Grid item component={Card} xs={12} md={3} className="p-2 m-2  recovered">
+                    <Grid item component={Card} xs={12} md={3} className="p-2 m-2 mt-4   recovered">
                         <CardContent>
                             <Typography colors="textSecondary" gutterBottom >Recovered </Typography>
                             <Typography variant="h5">
@@ -66,7 +64,7 @@ class Cards extends Component {
                         </CardContent>
                     </Grid>
 
-                    <Grid item component={Card} xs={12} md={3} className="p-2 m-2  deaths">
+                    <Grid item component={Card} xs={12} md={3} className="p-2 m-2 mt-4  deaths">
                         <CardContent>
                             <Typography colors="textSecondary" gutterBottom >Deaths</Typography>
                             <Typography variant="h5">

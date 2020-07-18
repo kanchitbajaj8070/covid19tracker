@@ -9,7 +9,17 @@
 {
     font-family: 'IBM Plex Serif', serif;
 }
-
+.main-date
+{
+    background: rgba(0,133,240,.0927451);
+    color: #007bff !important;
+}
+.button-secondary
+{
+    background: rgba(0,123,255,.0627451) !important;
+    color: #007bff !important;
+    border: 1px solid #007bff !important;
+}
 .font-libre
 {
     font-family: 'Libre Baskerville', serif;
@@ -47,13 +57,13 @@
 }
 .vertical-line
 {
-    border-right: 2px solid #b993d6;
+    border-right: 2px solid #007bff ;
     padding-right: 2px;
 }
 .border-all
 {
 
-    border: 3px solid #b993d6;
+    border: 3px solid #007bff !important;;
     padding: 3px;
     border-radius: 15px;
 }
@@ -66,7 +76,7 @@
 }
 .hr-line
 {
-    border-top: 2px solid #b993d6;
+    border-top: 2px solid #007bff !important;
 }
 .top-gap
 {
@@ -102,4 +112,15 @@
     border-style: solid;
     border-color: white;
 
+}
+.font-size-small
+{
+    font-size: 13px;
+}
+.back-light-dark
+{
+    background: rgba(108,117,125,.0627451)!important;
+    color: #08c!important;
+    opacity: .95;
+    box-shadow: 5px 5px 0px rgba(0, 118, 118, 0.2) !important;
 }

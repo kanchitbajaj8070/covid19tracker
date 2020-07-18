@@ -5,6 +5,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './assests/css/fonts.css'
+import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css';
 ReactDOM.render(
   <div className="justify-content-center text-center align-content-center align-items-center">
 

@@ -7,52 +7,34 @@ import {getDailyDataByCountry,getDailyGlobalData} from "../actions/dataActions";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import {connect} from "react-redux";
 import PropTypes from "prop-types"
+import Tables from "./Tables";
 
 class Charts extends React.Component {
     constructor(props) {
         super(props);
         this.state={
             dailyData:[],
-            loading:false,
+            loading:true,
             country:"global",
             totalData:{}
         }
     }
-    componentDidMount() {
-        //this.props.getDailyGlobalData();
-/*
-        const fetchApi=async ()=>
-        {   let dailyData=null;
-        if( this.state.country==="global")
-            dailyData=await fetchAllData();
-        else
-             dailyData= await fetchDataByCountry(this.props.country);
-            console.log( dailyData);
-            this.setState({dailyData:dailyData});
-        }
-        fetchApi();
-*/
 
-
-    }
     componentWillReceiveProps(nextProps, nextContext) {
 
-        console.log("inside charts components will recieve props",nextProps)
-      if( nextProps)
+      if( nextProps&&nextProps.dailyData.length>0)
       {
 
-          this.setState({dailyData:nextProps.dailyData,country:nextProps.country,totalData:nextProps.totalData})
+          this.setState({dailyData:nextProps.dailyData,country:nextProps.country,totalData:nextProps.totalData,loading:false})
       }
-      console.log( "state after charts componentwillrecieveprops",this.state)
 
     }
 
     render() {
-console.log("inside render of charts",this.state)
         const lineChart =(
-            this.state.dailyData&&this.state.dailyData.length > 2 ? (
+            this.state.dailyData&&this.state.loading===false&&this.state.dailyData.length > 2 ? (
                 <div >
-                    <Line height={"300px"}  data={{
+                    <Line height={"400px"}  data={{
                         labels: this.state.dailyData.map((d) => d.date),
                         datasets: [{
                             data: this.state.dailyData.map((d) => d.confirmed),
@@ -83,44 +65,57 @@ console.log("inside render of charts",this.state)
                         xAxes: [{
                              type:'time',
                         position: 'bottom',
-                        ticks: {
-                            type :'time',
-                        stepSize: 12,
-                            fixedStepSize:12
-                    }
+                            time: {
+                                unit: "day",
+                                unitStepSize: 1,
+                                displayFormats: {
+                                    millisecond: 'MMM DD',
+                                    second: 'MMM DD',
+                                    minute: 'MMM DD',
+                                    hour: 'MMM DD',
+                                    day: 'MMM DD',
+                                    week: 'MMM DD',
+                                    month: 'MMM DD',
+                                    quarter: 'MMM DD',
+                                    year: 'MMM DD',
+                                }
+                            }
+
+
                     }]
-                    },
+                    },maintainAspectRatio: false
                     }}
                      />
-                </div>) : (<div className="font-merri display-4 text-dark"> No data for displaying charts </div>)
+                </div>) : (this.state.loading===true?(  <CircularProgress color={"primary"}/>):(<div className="font-merri display-4 text-dark">
+                No data for displaying charts </div>))
 
         );
 
         const loader=(
             this.state.loading===true? <div>
-                {console.log("loader shown")}
                 <CircularProgress color={"primary"}/>
-            </div>:<div className="font-merri text-dark"> {`Charts for Daily Data`}</div>
+            </div>:<div className="font-merri text-muted"> {` Daily Data`}</div>
         );
         let {confirmed}=this.state.totalData? this.state.totalData:0;
         let {recovered}=this.state.totalData? this.state.totalData:0;
         let {deaths}=this.state.totalData? this.state.totalData:0;
+        console.log(this.state.loading)
         return (
-            <div className={"row"}>
-                <div className="col-sm-12 col-md-6 ">
-                {loader}
+            <div className="container-fluid">
+            <div className="row  justify-content-center">
+                <div className="col-sm-12 bg-light col-md-6 border-all mt-2 mb-2  shadow-lg vertical-line">
+                    {loader}
                 {lineChart}
                 </div>
-                <div className="col-sm-12 col-md-6 mt-4">
+                <div className="col-sm-12 col-md-5 ml-md-5 m-2 bg-light  border-all shadow-lg">
                 {this.state.totalData &&confirmed>0?(
-
                 <Bar height="300px"
                     data={{
                         labels: ['Confirmed', 'Recovered', 'Deaths'] ,
                         datasets: [
                             {
                                 backgroundColor: ['rgba(0,0,255,0.5)','rgba(0,255,0,0.5)','rgba(255,0,0,.5)'],
-                                borderColor: '#534292',
+                                borderColor: '#bdbdbd',
                                 borderWidth: 2,
                                 data:[confirmed,recovered,deaths]
 
@@ -134,9 +129,12 @@ console.log("inside render of charts",this.state)
                         legend:{
                             display:false,
                             position:'top',
-                        }
+                        },
+                         maintainAspectRatio: false
                     }}
-                />):<div className=" font-plex display-4 text-dark">Currently we have no data on selected country </div>}
+                />): (this.state.loading===true?(  <CircularProgress color={"primary"}/>):
+                    (<div className=" font-plex display-4 text-dark">Currently we have no data on selected country </div>))}
+            </div>
             </div>
             </div>
         );
@@ -155,36 +153,3 @@ const MapStateToProps=(state)=>({
     country:state.data.country
 });
 export default connect(MapStateToProps,{getDailyGlobalData,getDailyDataByCountry})(Charts);
-
-/*
-Charts =(props)=>
-{
-    const [dailyData,setDailyData]=useState([]);
-    const [country,setCountry]=useState('global');
-    const [loading,setLoading]=useState(true);
-
-    useEffect(()=>
-        {
-
-        }
-    ,[country]);
-
-    const loadDataByCountry= async (country)=>
-    {
-        let dailyData=null;
-        if( props.country==="global")
-            dailyData =await  fetchAllData();
-        else
-       dailyData= await fetchTotalDataByCountry(props.country);
-        console.log( dailyData);
-        setDailyData( dailyData);
-        setLoading(false);
-        console.log( "in loadData By ciuntries",dailyData)
-    }
-
-    return (
-
-    );
-
-}
-export default Charts;*/
